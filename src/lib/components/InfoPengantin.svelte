@@ -1,12 +1,5 @@
 <script>
-	let {
-		name,
-		orderText,
-		fatherName,
-		motherName,
-		logoSrc = 'https://res.cloudinary.com/dzzfgwj4/image/upload/v1789117606/images.png',
-		photoSrc = 'https://res.cloudinary.com/dzzfgwj4/image/upload/v1789149926/static.xx.fbcdn.webp'
-	} = $props();
+	let { name, orderText, fatherName, motherName, bgSrc, photoSrc } = $props();
 </script>
 
 <div class="relative h-1/2 bg-white">
@@ -26,7 +19,7 @@
 		</div>
 	</div>
 	<div class="absolute top-0 left-0 h-1/2">
-		<img src={logoSrc} alt="" />
+		<img src={bgSrc} alt="" />
 	</div>
 	<div class="absolute top-1/2 left-1/2 w-1/2 -translate-1/2">
 		<img src={photoSrc} alt="" />
