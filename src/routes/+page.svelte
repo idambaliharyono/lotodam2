@@ -12,13 +12,13 @@
 <div>
 	<!--invitation page1 -->
 	<div class="relative h-screen">
-		<div class="relative h-1/2 bg-amber-900">
+		<div class="relative h-1/2 bg-primary">
 			<HeaderFooter variant="1"></HeaderFooter>
 			<div
 				class="absolute top-4/9
         left-1/2 w-2/5 -translate-1/2 px-2 text-justify text-white"
 			>
-				<h1 class="mb-6 text-center text-lg">Om Swastyastu</h1>
+				<h1 class="mb-6 text-center font-heading text-lg">Om Swastyastu</h1>
 				<!-- <span -->
 				<!-- 	>"Ya Tuhan Yang Maha Pengasih, anugrahkanlah kepada pasangan ini tanpa terpisahkan, -->
 				<!-- 	panjang umur, semoga pernikahan ini dianugrahkan putra-putri dan cucu yang memberi -->
@@ -169,7 +169,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="relative h-1/2 bg-amber-900">
+		<div class="relative h-1/2 bg-primary">
 			<div class="absolute top-1/4 left-0 w-full border border-red-500 text-center text-white">
 				<div class="mb-10 flex flex-col gap-5">
 					<h3 class="text-sm">Waktu</h3>
@@ -201,7 +201,7 @@
 			/>
 		</div>
 	</div>
-	<div class="h-1/2 bg-amber-900"></div>
+	<div class="h-1/2 bg-primary"></div>
 	<div class="absolute top-1/2 left-0 mx-auto flex w-full -translate-y-1/5 flex-col gap-6">
 		<div class="mr-[40%] ml-[20%] aspect-square w-9/20 overflow-hidden">
 			<img
@@ -222,7 +222,7 @@
 <!-- todo! -->
 
 <div class="h-screen">
-	<div class="flex h-1/2 bg-amber-900">
+	<div class="flex h-1/2 bg-primary">
 		<div class="h-full w-1/2">
 			<img
 				src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317209/galeri3.jpg"
@@ -240,7 +240,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex h-1/2 bg-amber-900">
+	<div class="flex h-1/2 bg-primary">
 		<div class="h-full w-1/2"></div>
 		<div class="h-full w-1/2">
 			<img

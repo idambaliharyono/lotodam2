@@ -4,3 +4,21 @@
 /* * { */
 /* 	outline: 1px solid red; */
 /* } */
+@font-face {
+	font-family: 'HeadingFont';
+	src: url('/AquilineTwo.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'BodyFont';
+	src: url('/GARA.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@theme {
+	--color-primary: #190600;
+	--font-heading: 'HeadingFont', cursive;
+	--font-body: 'BodyFont', serif;
+}
