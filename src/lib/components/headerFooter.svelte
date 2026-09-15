@@ -9,18 +9,18 @@
 
 {#if variant === '1'}
 	<div
-		class="absolute left-0 w-full {positionClasses[
+		class="absolute left-0 w-full text-[10px] tracking-[1.5px] {positionClasses[
 			position
-		]} flex flex-row justify-between px-2 py-1 text-white"
+		]} flex flex-row justify-between px-2.5 py-3.5 text-white italic"
 	>
 		<span>DWIJAKSARA</span>
 		<span>WIDYA</span>
 	</div>
 {:else}
 	<div
-		class="absolute left-0 w-full {positionClasses[
+		class="absolute left-0 w-full text-[11px] tracking-[1.5px] {positionClasses[
 			position
-		]} flex flex-row justify-between px-2 py-1 text-white"
+		]} flex flex-row justify-between px-2.5 py-3.5 text-white"
 	>
 		<span>9/10/26</span>
 		<span>PAWIWAHAN</span>
