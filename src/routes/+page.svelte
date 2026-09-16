@@ -26,7 +26,7 @@
 <!-- state1  -->
 {#if showCover}
 	<button
-		class="fixed top-0 left-1/2 z-10 h-screen max-w-[430px] -translate-x-1/2"
+		class="fixed top-0 left-1/2 z-10 mx-auto h-dvh w-full max-w-[430px] -translate-x-1/2"
 		transition:fade={{ duration: 400 }}
 		onclick={() => (showCover = false)}
 	>
@@ -36,7 +36,7 @@
 <!-- state2 -->
 {#if showEnvelope}
 	<button
-		class="fixed inset-0 z-9 mx-auto h-screen w-full max-w-[430px] overflow-hidden"
+		class="fixed inset-0 z-9 mx-auto h-dvh w-full max-w-[430px] overflow-hidden"
 		transition:fade={{ duration: 400 }}
 		onclick={() => (showEnvelope = false)}
 	>
@@ -69,9 +69,16 @@
 	</button>
 {/if}
 <!-- state3 -->
-<div>
+<div
+	class="fixed inset-0 z-20 hidden
+  items-center justify-center bg-black p-8 text-center font-body text-white
+  [@media(max-height:500px)]:flex"
+>
+	<p>Please rotate your device to portrait mode to view this invitation......</p>
+</div>
+<div class="  [@media(max-height:500)]:hidden">
 	<!--invitation page1 -->
-	<div class="relative h-screen">
+	<div class="relative h-dvh">
 		<div class="relative h-1/2 bg-primary">
 			<HeaderFooter variant="1"></HeaderFooter>
 			<div
@@ -105,7 +112,7 @@
 					playsinline
 				></video>
 			</div>
-			<div class="absolute top-full left-0 mt-2 w-full">
+			<div class="absolute top-full left-0 mt-3 w-full">
 				<div class=" w-[198px] text-justify leading-3 tracking-[1.3px] text-primary">
 					Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa, Kami
 					Bermaksud Mengundang Bapak/Ibu/Saudara/i, pada Acara Manusa Yadnya - Pawiwahan anak kami.
@@ -115,7 +122,7 @@
 	</div>
 
 	<!-- invitation page2 -->
-	<div class="h-screen">
+	<div class="h-dvh">
 		<InfoPengantin
 			name="I Gusti Bagus Agung Dwijaksara, S.Arsl., IALI"
 			orderText="putra ke dua dari pasangan"
@@ -135,7 +142,7 @@
 	</div>
 
 	<!-- invitation page3 -->
-	<div class="mt-10 h-screen">
+	<div class="mt-10 h-dvh">
 		<div class="mx-6 h-1/2">
 			<div class="flex w-full gap-5">
 				<!-- Left column: photo 1 + caption -->
@@ -244,7 +251,7 @@
 		</div>
 	</div>
 </div>
-<div class="relative h-screen">
+<div class="relative h-dvh">
 	<div class="h-1/2">
 		<div class="h-1/2 w-full">
 			<img
@@ -274,7 +281,7 @@
 </div>
 <!-- todo! -->
 
-<div class="h-screen">
+<div class="h-dvh">
 	<div class="flex h-1/2 bg-primary">
 		<div class="h-full w-1/2">
 			<img
@@ -305,7 +312,7 @@
 	</div>
 </div>
 
-<div class="relative flex h-screen bg-white">
+<div class="relative flex h-dvh bg-white">
 	<div class="h-full w-11/20">
 		<img
 			src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317209/galeri6.jpg"
