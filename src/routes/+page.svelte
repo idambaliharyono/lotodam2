@@ -13,8 +13,14 @@
 			document.body.style.overflow = '';
 		};
 	});
-	let recipient1 = $derived(page.url.searchParams.get('to1') ?? 'Bapak/Ibu/Saudara/I');
-	let recipient2 = $derived(page.url.searchParams.get('to2'));
+	let recipient1 = $state('Bapak/Ibu/Saudara/i');
+	let recipient2 = $state<string | null>(null);
+
+	$effect(() => {
+		const params = new URLSearchParams(window.location.search);
+		recipient1 = params.get('to1') ?? params.get('to') ?? 'Bapak/Ibu/Saudara/i';
+		recipient2 = params.get('to2');
+	});
 </script>
 
 <!-- state1  -->
