@@ -2,12 +2,66 @@
 	import HeaderFooter from '$lib/components/headerFooter.svelte';
 	import InfoPengantin from '$lib/components/InfoPengantin.svelte';
 	import Cover from '$lib/components/Cover.svelte';
+	import { fade } from 'svelte/transition';
+	import { page } from '$app/state';
+	let showCover = $state(true);
+	let showEnvelope = $state(true);
+
+	$effect(() => {
+		document.body.style.overflow = showCover || showEnvelope ? 'hidden' : '';
+		return () => {
+			document.body.style.overflow = '';
+		};
+	});
+	let recipient1 = $derived(page.url.searchParams.get('to1') ?? 'Bapak/Ibu/Saudara/I');
+	let recipient2 = $derived(page.url.searchParams.get('to2'));
 </script>
 
 <!-- state1  -->
-<div></div>
+{#if showCover}
+	<button
+		class="fixed inset-0 z-10 h-screen w-full"
+		transition:fade={{ duration: 400 }}
+		onclick={() => (showCover = false)}
+	>
+		<Cover></Cover>
+	</button>
+{/if}
 <!-- state2 -->
-<div></div>
+{#if showEnvelope}
+	<button
+		class="fixed inset-0 z-9 h-screen w-full"
+		transition:fade={{ duration: 400 }}
+		onclick={() => (showEnvelope = false)}
+	>
+		<div
+			class="absolute top-1/2 left-1/2 aspect-34/9 w-5/6 -translate-x-1/2 -translate-y-1/2 font-body text-[10px] text-white shadow-[0_0_0_9999px_var(--color-primary)]"
+		>
+			<div
+				class="bottom-full-full absolute left-0 -mt-7 flex w-full items-center
+      justify-center text-center"
+			>
+				<h1 class="">BUKA UNDANGAN</h1>
+			</div>
+			<div
+				class="absolute top-full left-0 mt-5 flex w-full flex-col items-center
+      justify-center gap-0 text-center"
+			>
+				<h1 class="">{recipient1}</h1>
+				{#if recipient2}
+					<h1 class="">{recipient2}</h1>
+				{/if}
+			</div>
+		</div>
+		<div
+			class="absolute top-1/4 left-0 flex w-full -translate-y-1/2 items-center
+      justify-center text-center font-heading text-base text-white"
+		>
+			<h1 class="">Dwijaksara & Widya</h1>
+		</div>
+		<HeaderFooter variant="2" position="bottom"></HeaderFooter>
+	</button>
+{/if}
 <!-- state3 -->
 <div>
 	<!--invitation page1 -->

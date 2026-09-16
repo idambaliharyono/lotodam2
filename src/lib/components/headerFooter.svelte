@@ -18,11 +18,11 @@
 	</div>
 {:else}
 	<div
-		class="absolute left-0 w-full text-[11px] tracking-[1.5px] {positionClasses[
+		class="absolute left-0 w-full text-[11px] tracking-[2px] {positionClasses[
 			position
-		]} flex flex-row justify-between px-2.5 py-3.5 text-white"
+		]} flex flex-row justify-between px-2.5 py-3.5 text-white italic"
 	>
-		<span>9/10/26</span>
+		<span>9 / 10 / 26</span>
 		<span>PAWIWAHAN</span>
 	</div>
 {/if}
