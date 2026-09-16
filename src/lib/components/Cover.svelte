@@ -1,7 +1,7 @@
 <div class="h-screen">
 	<div
 		class="relative
-   h-1/2 w-full overflow-hidden"
+   mx-auto h-1/2 max-w-[430px] overflow-hidden"
 	>
 		<img
 			src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317213/cover1.jpg"

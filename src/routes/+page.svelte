@@ -26,7 +26,7 @@
 <!-- state1  -->
 {#if showCover}
 	<button
-		class="fixed inset-0 z-10 h-screen w-full"
+		class="fixed top-0 left-1/2 z-10 h-screen max-w-[430px] -translate-x-1/2"
 		transition:fade={{ duration: 400 }}
 		onclick={() => (showCover = false)}
 	>
@@ -36,7 +36,7 @@
 <!-- state2 -->
 {#if showEnvelope}
 	<button
-		class="fixed inset-0 z-9 h-screen w-full"
+		class="fixed inset-0 z-9 mx-auto h-screen w-full max-w-[430px] overflow-hidden"
 		transition:fade={{ duration: 400 }}
 		onclick={() => (showEnvelope = false)}
 	>
@@ -79,11 +79,6 @@
         left-1/2 w-[162px] -translate-1/2 px-2 text-justify text-white"
 			>
 				<h1 class="mb-6 text-center font-heading text-lg">Om Swastyastu</h1>
-				<!-- <span -->
-				<!-- 	>"Ya Tuhan Yang Maha Pengasih, anugrahkanlah kepada pasangan ini tanpa terpisahkan, -->
-				<!-- 	panjang umur, semoga pernikahan ini dianugrahkan putra-putri dan cucu yang memberi -->
-				<!-- 	penghiburan, tinggal di rumah yang penuh kebahagiaan"</span -->
-				<!-- > -->
 				<div class="text-justify leading-2.5 tracking-[1.75px] [text-align-last:justify]">
 					<p>"Ya Tuhan Yang Maha Pen-</p>
 					<p>gasih, anugrahkanlah kepa-</p>
@@ -98,25 +93,24 @@
 				<p class="mt-2 text-center">(Reg Weda X. 85.42)</p>
 			</div>
 		</div>
-		<div class="relative h-1/2 bg-white">
-			<div class="absolute top-4/11 left-1/2 w-5/6 -translate-1/2">
-				<div class=" w-[198px] text-justify leading-3 tracking-[1.3px]">
+		<div class="h-1/2 bg-white"></div>
+		<div class="absolute top-1/2 left-1/2 aspect-video w-5/6 -translate-x-1/2 -translate-y-1/2">
+			<div class="aspect-video w-full overflow-hidden">
+				<video
+					class="h-full w-full object-cover object-center"
+					src="https://res.cloudinary.com/dzzfgwj4/video/upload/v1789096155/intro.mp4"
+					autoplay
+					muted
+					loop
+					playsinline
+				></video>
+			</div>
+			<div class="absolute top-full left-0 mt-2 w-full">
+				<div class=" w-[198px] text-justify leading-3 tracking-[1.3px] text-primary">
 					Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa, Kami
 					Bermaksud Mengundang Bapak/Ibu/Saudara/i, pada Acara Manusa Yadnya - Pawiwahan anak kami.
 				</div>
 			</div>
-		</div>
-		<div
-			class="absolute top-1/2 left-1/2 aspect-video w-5/6 -translate-x-1/2 -translate-y-1/2 overflow-hidden object-cover"
-		>
-			<video
-				class="h-full w-full object-cover object-center"
-				src="https://res.cloudinary.com/dzzfgwj4/video/upload/v1789096155/intro.mp4"
-				autoplay
-				muted
-				loop
-				playsinline
-			></video>
 		</div>
 	</div>
 
