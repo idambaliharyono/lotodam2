@@ -2,10 +2,19 @@
 	import HeaderFooter from '$lib/components/headerFooter.svelte';
 	import InfoPengantin from '$lib/components/InfoPengantin.svelte';
 	import Cover from '$lib/components/Cover.svelte';
-	import { fade } from 'svelte/transition';
+	import { blur, fade, fly } from 'svelte/transition';
 	import { page } from '$app/state';
 	let showCover = $state(true);
 	let showEnvelope = $state(true);
+	let videoEl: HTMLVideoElement | undefined = $state();
+
+	function handleState1() {
+		showCover = false;
+		if (videoEl) {
+			videoEl.muted = false;
+			videoEl.play();
+		}
+	}
 
 	$effect(() => {
 		document.body.style.overflow = showCover || showEnvelope ? 'hidden' : '';
@@ -24,20 +33,23 @@
 </script>
 
 <!-- state1  -->
-{#if showCover}
+{#if showCover}:console.warn();
+
 	<button
 		class="fixed top-0 left-1/2 z-10 mx-auto h-dvh w-full max-w-[430px] -translate-x-1/2"
-		transition:fade={{ duration: 400 }}
-		onclick={() => (showCover = false)}
+		transition:fade={{ duration: 1500 }}
+		onclick={handleState1}
 	>
-		<Cover></Cover>
+		<div transition:blur={{ duration: 500, opacity: 200 }}>
+			<Cover></Cover>
+		</div>
 	</button>
 {/if}
 <!-- state2 -->
 {#if showEnvelope}
 	<button
 		class="fixed inset-0 z-9 mx-auto h-dvh w-full max-w-[430px] overflow-hidden"
-		transition:fade={{ duration: 400 }}
+		transition:fade={{ duration: 1000 }}
 		onclick={() => (showEnvelope = false)}
 	>
 		<div
@@ -47,11 +59,12 @@
 				class="bottom-full-full absolute left-0 -mt-7 flex w-full items-center
       justify-center text-center"
 			>
-				<h1 class="">BUKA UNDANGAN</h1>
+				<h1 class="" out:fly={{ y: -200, duration: 2000 }}>BUKA UNDANGAN</h1>
 			</div>
 			<div
 				class="absolute top-full left-0 mt-5 flex w-full flex-col items-center
       justify-center gap-0 text-center"
+				out:fly={{ y: 200, duration: 2000 }}
 			>
 				<h1 class="">{recipient1}</h1>
 				{#if recipient2}
@@ -63,7 +76,7 @@
 			class="absolute top-1/4 left-0 flex w-full -translate-y-1/2 items-center
       justify-center text-center font-heading text-base text-white"
 		>
-			<h1 class="">Dwijaksara & Widya</h1>
+			<h1 class="" out:fly={{ y: -200, duration: 1200 }}>Dwijaksara & Widya</h1>
 		</div>
 		<HeaderFooter variant="2" position="bottom"></HeaderFooter>
 	</button>
@@ -71,14 +84,14 @@
 <!-- state3 -->
 <div
 	class="fixed inset-0 z-20 hidden
-  items-center justify-center bg-black p-8 text-center font-body text-white
-  [@media(max-height:500px)]:flex"
+  items-center justify-center bg-black p-8 text-center font-body
+  text-white [@media(max-height:500px)]:flex"
 >
-	<p>Please rotate your device to portrait mode to view this invitation......</p>
+	<p class="text-xl">Please rotate your device to portrait mode to view this invitation...</p>
 </div>
 <div class="  [@media(max-height:500)]:hidden">
 	<!--invitation page1 -->
-	<div class="relative h-dvh">
+	<div class="relative h-dvh snap-always">
 		<div class="relative h-1/2 bg-primary">
 			<HeaderFooter variant="1"></HeaderFooter>
 			<div
@@ -106,7 +119,7 @@
 				<video
 					class="h-full w-full object-cover object-center"
 					src="https://res.cloudinary.com/dzzfgwj4/video/upload/v1789096155/intro.mp4"
-					autoplay
+					bind:this={videoEl}
 					muted
 					loop
 					playsinline
@@ -122,7 +135,7 @@
 	</div>
 
 	<!-- invitation page2 -->
-	<div class="h-dvh">
+	<div class="h-dvh snap-always">
 		<InfoPengantin
 			name="I Gusti Bagus Agung Dwijaksara, S.Arsl., IALI"
 			orderText="putra ke dua dari pasangan"
@@ -155,16 +168,14 @@
 						/>
 					</div>
 					<div class="w-[115px]">
-						<p
-							class="mt-3 -mr-2 text-justify leading-2.5 tracking-[1.8px] [text-align-last:justify]"
-						>
+						<p class="mt-3 -mr-2 text-left leading-2.5 tracking-[1.2px]">
 							Apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami
 						</p>
 					</div>
 				</div>
 
 				<!-- Right column: intro text, then photo row -->
-				<div class="flex w-2/3 flex-col leading-2.5 tracking-[1.8px]">
+				<div class="flex w-2/3 flex-col text-left leading-2.5 tracking-[1.2px]">
 					<p>
 						Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga pada acara sederhana ini
 					</p>
@@ -192,23 +203,21 @@
 				</div>
 			</div>
 
-			<div class="mt-10 flex gap-5">
-				<div class="flex w-1/3">
-					<div class="h-full w-full">
-						<div class="aspect-square overflow-hidden">
-							<img
-								src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317217/3-4.jpg"
-								class="h-full w-full object-cover"
-								alt="pengantin"
-							/>
-						</div>
+			<div class="mt-3 flex w-full gap-5">
+				<div class="flex w-1/3 flex-col">
+					<div class="aspect-square overflow-hidden">
+						<img
+							src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317217/3-4.jpg"
+							class="h-full w-full object-cover"
+							alt="pengantin"
+						/>
 					</div>
 				</div>
 
-				<div class="flex w-2/3 flex-col">
-					<div class="flex h-full gap-5">
-						<div class="flex-1">
-							<div class="aspect-square h-full w-full overflow-hidden">
+				<div class="flex w-2/3 flex-col text-left leading-2.5 tracking-[1.2px]">
+					<div class="my-auto flex gap-5">
+						<div class="">
+							<div class="aspect-square overflow-hidden">
 								<img
 									src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317217/3-5.jpg"
 									class="h-full w-full object-cover object-center"
@@ -216,8 +225,8 @@
 								/>
 							</div>
 						</div>
-						<div class="flex-1">
-							<div class="aspect-square h-full w-full overflow-hidden">
+						<div>
+							<div class="aspect-square overflow-hidden">
 								<img
 									src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317217/3-6.jpg"
 									class="h-full w-full object-cover object-center"
@@ -228,6 +237,43 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- <div class="mt-10 flex gap-5"> -->
+			<!-- 	<div class="flex w-1/3"> -->
+			<!-- 		<div class="h-full w-full"> -->
+			<!-- 			<div class="aspect-square overflow-hidden"> -->
+			<!-- 				<img -->
+			<!-- 					src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317217/3-4.jpg" -->
+			<!-- 					class="h-full w-full object-cover" -->
+			<!-- 					alt="pengantin" -->
+			<!-- 				/> -->
+			<!-- 			</div> -->
+			<!-- 		</div> -->
+			<!-- 	</div> -->
+			<!---->
+			<!-- 	<div class="flex w-2/3 flex-col"> -->
+			<!-- 		<div class="flex h-full gap-5"> -->
+			<!-- 			<div class="flex-1"> -->
+			<!-- 				<div class="aspect-square h-full w-full overflow-hidden"> -->
+			<!-- 					<img -->
+			<!-- 						src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317217/3-5.jpg" -->
+			<!-- 						class="h-full w-full object-cover object-center" -->
+			<!-- 						alt="pengantin" -->
+			<!-- 					/> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
+			<!-- 			<div class="flex-1"> -->
+			<!-- 				<div class="aspect-square h-full w-full overflow-hidden"> -->
+			<!-- 					<img -->
+			<!-- 						src="https://res.cloudinary.com/dzzfgwj4/image/upload/v1789317217/3-6.jpg" -->
+			<!-- 						class="h-full w-full object-cover object-center" -->
+			<!-- 						alt="pengantin" -->
+			<!-- 					/> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
+			<!-- 		</div> -->
+			<!-- 	</div> -->
+			<!-- </div> -->
 		</div>
 		<div class="relative h-1/2 bg-primary">
 			<div class="absolute top-1/5 left-0 w-full text-center text-white">
@@ -279,7 +325,6 @@
 		</div>
 	</div>
 </div>
-<!-- todo! -->
 
 <div class="h-dvh">
 	<div class="flex h-1/2 bg-primary">
